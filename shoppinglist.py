@@ -1,3 +1,4 @@
+#default shopping list
 shopping_list = ["milk", "bread", "eggs", "quinoa"]
 
 #function definitions:
