@@ -1,5 +1,5 @@
 #input
-plaintext = raw_input("Enter the text that you want to decrypt: ")
+plaintext = raw_input("Enter the text that you want to encrypt: ")
 key1 = int(raw_input("Enter key value 1: "))
 key2 = int(raw_input("Enter key value 2: "))
 #key3 = int(raw_input("Enter key value 3: "))
@@ -7,18 +7,22 @@ key2 = int(raw_input("Enter key value 2: "))
 
 #step 1: converting to int
 number_list = [ord(letter) for letter in plaintext]
+
 print "step 1: ", number_list
 
 
-#step 2: multiply by key1 and key2
-for section in number_list:
-	even = int(section)%2
-	if even == 0:
-		mult = key1
-	else: mult = key2
+#step 2: multiply by key1 and key2 based on if the index is even or odd
+def multiply(number_list):
+ for index, element in enumerate(number_list,0):
+ 	if index%2 == 0:
+ 		number_list[index] = key1 * element
+ 	else:
+ 		number_list[index] = key2 * element
+ return number_list	
 
-multiplied = [ord(letter)*mult for letter in plaintext]
-print "step 2: ", multiplied
+multiplied = multiply(number_list)
+
+print "Step 2: ", multiplied	
 
 
 #step 3: Reverse each section
@@ -30,6 +34,7 @@ def scramble(multiplied):
 	return multiplied
 
 reverse = scramble(multiplied)
+
 print "step 3: ", reverse
 
 
@@ -38,12 +43,3 @@ print "step 3: ", reverse
 
 
 
-# to encrypt: 
-#1: ord() * keyvalue1
-#2: chunk it up into sections of keyvalue2, and then put in inverse order
-#3: oct()
-
-# to decrypt:
-#3: chr() then divide by keyvalue1
-#2: chunk up sections, place in reverse order
-#1: 
