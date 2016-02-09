@@ -37,6 +37,12 @@ reverse = scramble(multiplied)
 
 print "step 3: ", reverse
 
+#step 4: convert to int. 
+#NOTE: is there any way to keep int format without losing leading zeroes?
+def scramble(reverse):
+	return reverse[::-1]
+
+print "Encrypted: ", scramble(reverse)
 
 
 
