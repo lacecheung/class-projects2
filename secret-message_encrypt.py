@@ -48,8 +48,36 @@ print
 def scramble(reverse):
 	return reverse[::-1]
 
-print "Encrypted: ", scramble(reverse)
-print
+print "Encrypted: "
+for item in scramble(reverse):
+	print item,
+
+encrypted_message = scramble(reverse)
+
+
+#step 5: write to text file
+create_file = raw_input("\n"+"Do you want to create a new file with this code?")
+
+if create_file.lower() == "yes":
+	print "Where to you want to save this file?"
+	print "1: Current directory"
+	print "2: Custom File path"
+	location_option = int(raw_input())
+
+	if location_option == 1:
+		file_location = "encrypted_message.txt"
+	elif location_option == 2:
+		file_location = raw_input("Type in file path. eg. ~\\Desktop\\")+"encrypted_message.txt"
+
+
+	new_file = open(file_location, "w")
+	for section in encrypted_message:
+		new_file.write(section + "\n")
+	new_file.close()
+	print "Your file has been successfully saved as", file_location
+
+
+
 
 
 

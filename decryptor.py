@@ -1,4 +1,18 @@
-sequence = raw_input("Enter the sequence that you want to decrypt, separated with commmas: ")
+print "Do you want to type in your code or open from a file?"
+print "1: Type in"
+print "2: open from file"
+open_option = int(raw_input())
+
+if open_option == 1:
+	sequence = raw_input("Enter the sequence that you want to decrypt, separated with a space eg. 304 603 493")
+	sequence = sequence.split(" ")
+elif open_option == 2:
+	file_location = raw_input("type in file location. eg. C:\\Users\\Desktop\\encrypted_message.txt")
+	with open(file_location) as my_file:
+		sequence = my_file.readlines()
+		print "Your code has been successfully uploaded"
+
+
 key1 = int(raw_input("Enter key value 1: "))
 key2 = int(raw_input("Enter key value 2: "))
 print
@@ -6,11 +20,10 @@ print
 print "Results: "
 print 
 
+
 #create list:
-sequence = sequence.split(",")
 
 print "List form: ", sequence
-
 
 
 #step 1: reverse order:
@@ -49,6 +62,6 @@ print
 #step 4: Change back to ascii
 decrypted = [chr(element) for element in divided]
 
-print "Decrypted ", "".join(decrypted)
+print "Decrypted: ", "".join(decrypted)
 print
 
